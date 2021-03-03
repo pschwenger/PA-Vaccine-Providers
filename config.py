@@ -1,8 +1,13 @@
 # The Google Sheet ID (found in the URL, replace with your own)
-GOOGLE_SHEET_ID = "1RazTpSNLwLSt2C2Q-_AdkcNp03OCTi1V8bFQH2UThLs"
+GOOGLE_SHEET_ID_UPDATE = "1Ubo99iQ0vGdQ4Ktc5R48kGCebjijIqPHRaI9z4D2U6E"
+GOOGLE_SHEET_ID_PRIMARY = "14wKv5wRxRp2ABnGS30QRpJq_kei4qR_OV4Id6ZKp1xI"
+GOOGLE_SHEET_ID_MAP = "1Jl3TPnxHKm5ScgnXUcXd5AafiQUlL3fBMBNUnN0dJgU"
 
 # Fill this in with the name of your provider data sheet
-PROVIDER_SHEET_NAME = "Pennsylvania Vaccine Provider Form"
+PROVIDER_SHEET_NAME = "Primary Sheet"
 
-# Fill this in with the name of the form response sheet
-FORM_SHEET_NAME = "Form responses"
+# Fill this in with the name of the form response sheet from Jotforms
+FORM_SHEET_NAME = "Form Responses"
+
+# Fill this in with the name of the map worksheet
+MAP_SHEET_NAME = "Google Map Extract"
