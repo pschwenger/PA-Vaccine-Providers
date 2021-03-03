@@ -4,21 +4,29 @@ import re
 import os.path
 import gspread
 
-from config import FORM_SHEET_NAME, PROVIDER_SHEET_NAME, GOOGLE_SHEET_ID
+from config import FORM_SHEET_NAME, PROVIDER_SHEET_NAME, GOOGLE_SHEET_ID_UPDATE, GOOGLE_SHEET_ID_PRIMARY
 from util import get_service_account
 
-FORM_CLINIC_ID_KEY = "Clinic ID"
-FORM_CLINIC_NAME_KEY = "Clinic name"
-FORM_APPROVED_KEY = "Admin: Approved"
-FORM_APPOINTMENTS_AVAILABLE_KEY = "Appointments available?"
-FORM_WALKIN_KEY = "Walk-ins accepted?"
-FORM_ADDRESS_KEY = "Clinic Address"
+FORM_CLINIC_ID_KEY = "Enter your Clinic ID (without leading zeroes)"
+FORM_CLINIC_NAME_KEY = "Clinic Name"
+FORM_APPROVED_KEY = "Admin Approval"
+FORM_APPOINTMENTS_AVAILABLE_KEY = "Vaccine Appointments Available"
+FORM_WALKIN_KEY = "Walk-ins Accepted"
+FORM_ADDRESS_KEY = "Street Address"
+FORM_CITY_KEY = "City"
+FORM_STATE_KEY = "State"
+FORM_ZIP_KEY = "ZIP Code"
+FORM_WEBSITE_KEY = "Clinic Website"
 
-CLINIC_ID_KEY = "clinic_id"
-CLINIC_NAME_KEY = "clinic_name"
-CLINIC_APPOINTMENTS_AVAILABLE_KEY = "appointments_available"
-CLINIC_WALKIN_KEY = "walkins_accepted"
-CLINIC_ADDRESS_KEY = "clinic_address"
+CLINIC_ID_KEY = "Clinic ID"
+CLINIC_NAME_KEY = "Clinic Name"
+CLINIC_APPOINTMENTS_AVAILABLE_KEY = "Vaccine Appointments Available"
+CLINIC_WALKIN_KEY = "Walk-ins Accepted"
+CLINIC_ADDRESS_KEY = "Street Address"
+CLINIC_CITY_KEY = "City"
+CLINIC_STATE_KEY = "State"
+CLINIC_ZIP_KEY = "ZIP Code"
+CLINIC_WEBSITE_KEY = "Clinic Website"
 
 
 def translate_update_to_clinic(update):
@@ -30,14 +38,15 @@ def translate_update_to_clinic(update):
         CLINIC_WALKIN_KEY: update[FORM_WALKIN_KEY],
         CLINIC_ADDRESS_KEY: update[FORM_ADDRESS_KEY],
         FORM_APPROVED_KEY: update[FORM_APPROVED_KEY],
+        CLINIC_WEBSITE_KEY: update[FORM_WEBSITE_KEY],
     }
 
 
 def get_clinic_updates():
     """Downloads the update data from Google Sheets"""
-    gc = gspread.service_account()
+    gc = get_service_account()
 
-    sheet = gc.open_by_key(GOOGLE_SHEET_ID)
+    sheet = gc.open_by_key(GOOGLE_SHEET_ID_UPDATE)
 
     worksheet = sheet.worksheet(FORM_SHEET_NAME)
     vals = worksheet.get_all_values()
@@ -80,9 +89,10 @@ def update_clinic(clinic_update):
     """Update in gsheets"""
     gc = get_service_account()
 
-    sheet = gc.open_by_key(GOOGLE_SHEET_ID)
+    sheet = gc.open_by_key(GOOGLE_SHEET_ID_PRIMARY)
     worksheet = sheet.worksheet(PROVIDER_SHEET_NAME)
 
+    #List for what fields we want to wait on, update everything but this
     DENY_LIST = [CLINIC_APPOINTMENTS_AVAILABLE_KEY, CLINIC_WALKIN_KEY]
 
     update_re = re.compile("^" + clinic_update[CLINIC_NAME_KEY] + "$")
@@ -104,9 +114,9 @@ def update_clinic(clinic_update):
 
 def get_clinics():
     """Downloads the merged data from Google Sheets"""
-    gc = gspread.service_account()
+    gc = get_service_account()
 
-    sheet = gc.open_by_key(GOOGLE_SHEET_ID)
+    sheet = gc.open_by_key(GOOGLE_SHEET_ID_PRIMARY)
     worksheet = sheet.worksheet(PROVIDER_SHEET_NAME)
 
     vals = worksheet.get_all_values()
