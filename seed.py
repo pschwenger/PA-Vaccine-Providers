@@ -21,11 +21,11 @@ def clean_clinic_data(clinic):
     return {
         "clinic_id": clinic["clinic_id"],
         "clinic_name": clinic["clinic_name"],
-        "Clinic_Address": clinic["Match_addr"],
+        "clinic_address": clinic["Match_addr"],
         "clinic_lat": clinic["Y"],
         "clinic_lon": clinic["X"],
-        "Clinic_Phone": clinic["clinic_poc_phone"],
-        "Clinic_Website": clinic["clinic_poc_websitelink"],
+        "clinic_phone": clinic["clinic_poc_phone"],
+        "clinic_website": clinic["clinic_poc_websitelink"],
         "volume_ordered": clinic["Total_Moderna_Volume_Ordered"]
         + clinic["Total_Pfizer_Volume_Ordered"],
         "volume_current": clinic["Total_Moderna_Current_Volume"]
@@ -36,17 +36,7 @@ def clean_clinic_data(clinic):
         "walkins_accepted": "Yes",
         "clinic_prescreen_address": "",
         "clinic_hours": "",
-        "Clinic Email": "",
-        "Vaccine Received": "",
-        "Vaccine Appointments Available": "",
-        "Month Vaccine Expected to be Received": "",
-        "Vaccine Appointments Available": "",
-        "Walk-ins Accepted": "",
-        "Weekend Hours Available": "",
-        "Saturday Hours": "",
-        "Sunday Hours": "",
         "show_on_map": "Yes",
-        
     }
 
 
