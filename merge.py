@@ -19,6 +19,13 @@ FORM_WEBSITE_KEY = "Clinic Website"
 FORM_REVIEW_KEY = "Approval Review Completed"
 FORM_PROCESSED_KEY = "Script Processed"
 FORM_NOTES_KEY = "Notes"
+FORM_SUNDAY_KEY = "Sunday Hours"
+FORM_MONDAY_KEY = "Monday Hours"
+FORM_TUESDAY_KEY = "Tuesday Hours"
+FORM_WEDNESDAY_KEY = "Wednesday Hours"
+FORM_THURSDAY_KEY = "Thursday Hours"
+FORM_FRIDAY_KEY = "Friday Hours"
+FORM_SATURDAY_KEY = "Saturday Hours"
 
 CLINIC_ID_KEY = "Clinic ID"
 CLINIC_NAME_KEY = "Clinic Name"
@@ -30,6 +37,13 @@ CLINIC_STATE_KEY = "State"
 CLINIC_ZIP_KEY = "ZIP Code"
 CLINIC_WEBSITE_KEY = "Clinic Website"
 CLINIC_LAST_UPDATED_KEY = "Last Updated"
+CLINIC_SUNDAY_KEY = "Sunday Hours"
+CLINIC_MONDAY_KEY = "Monday Hours"
+CLINIC_TUESDAY_KEY = "Tuesday Hours"
+CLINIC_WEDNESDAY_KEY = "Wednesday Hours"
+CLINIC_THURSDAY_KEY = "Thursday Hours"
+CLINIC_FRIDAY_KEY = "Friday Hours"
+CLINIC_SATURDAY_KEY = "Saturday Hours"
 
 UPDATE_COUNT = 0
 
@@ -46,6 +60,13 @@ def translate_update_to_clinic(update):
         CLINIC_STATE_KEY: update[FORM_STATE_KEY],
         CLINIC_ZIP_KEY: update[FORM_ZIP_KEY],
         CLINIC_WEBSITE_KEY: update[FORM_WEBSITE_KEY],
+        CLINIC_SUNDAY_KEY: update[FORM_SUNDAY_KEY],
+        CLINIC_MONDAY_KEY: update[FORM_MONDAY_KEY],
+        CLINIC_TUESDAY_KEY: update[FORM_TUESDAY_KEY],
+        CLINIC_WEDNESDAY_KEY: update[FORM_WEDNESDAY_KEY],
+        CLINIC_THURSDAY_KEY: update[FORM_THURSDAY_KEY],
+        CLINIC_FRIDAY_KEY: update[FORM_FRIDAY_KEY],
+        CLINIC_SATURDAY_KEY: update[FORM_SATURDAY_KEY],
         FORM_APPROVED_KEY: update[FORM_APPROVED_KEY],
         FORM_REVIEW_KEY: update[FORM_REVIEW_KEY],
         FORM_PROCESSED_KEY: update[FORM_PROCESSED_KEY],
